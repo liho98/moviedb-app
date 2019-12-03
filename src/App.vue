@@ -1,11 +1,5 @@
 <template>
   <v-app>
-    <!-- left navigation drawer -->
-    <LeftNaviDrawer />
-
-    <!-- right navigation drawer -->
-    <RightNaviDrawer />
-
     <v-content>
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
@@ -13,6 +7,14 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+
+    <!-- left navigation drawer -->
+    <LeftNaviDrawer />
+
+    <!-- right navigation drawer -->
+    <RightNaviDrawer />
+
+
   </v-app>
 </template>
 
@@ -35,12 +37,10 @@ export default {
 <style>
 html {
   overflow-y: hidden !important;
-  font-size: 12px !important;
+  font-size: 13px !important;
+  font-family: monospace!important;
 }
 ::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
-}
-.v-navigation-drawer__border {
-  z-index: 2!important;
 }
 </style>

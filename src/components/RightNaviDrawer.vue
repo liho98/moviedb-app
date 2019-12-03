@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app :right="$store.state.navigationDrawer" style="overflow-y:hidden">
+  <v-navigation-drawer app right style="overflow-y:hidden;background-color:rgba(255,255,255,0.12)">
     <v-container class="pa-0" fill-height>
       <v-row
         align="center"
@@ -13,17 +13,16 @@
           hide-details
           label="Search"
           prepend-inner-icon="mdi-magnify"
-          solo
+          solo-inverted
           color="pink"
-          style="border-bottom: 1px solid rgba(255, 255, 255, 0.12);"
         ></v-text-field>
       </v-row>
-
+      <v-divider style="margin-top: 48px"></v-divider>
       <v-row
         align="center"
         class="ma-5"
         no-gutters
-        style="align-self: baseline;margin-top: 80px!important;z-index:0"
+        style="align-self: baseline;margin-top: 30px!important;z-index:0"
       >
         <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
         <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
@@ -57,11 +56,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.v-navigation-drawer__border {
+  z-index: 2 !important;
+}
+.v-skeleton-loader__image {
+  height: 300px !important;
+}
+.v-skeleton-loader__heading {
+  margin-left: 0 !important;
+}
 .active-btn {
   border-right: 2px solid #ffffff;
 }
 .v-text-field--solo {
   border-radius: 0px;
+}
+.v-skeleton-loader__card-heading {
+  background-color: rgba(0, 0, 0, 0)!important;
 }
 </style>
