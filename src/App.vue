@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <!-- left navigation drawer -->
-      <LeftNaviDrawer />
+    <LeftNaviDrawer />
 
     <!-- right navigation drawer -->
-      <RightNaviDrawer />
+    <RightNaviDrawer />
 
     <v-content>
       <!-- Provides the application the proper gutter -->
@@ -35,5 +35,12 @@ export default {
 <style>
 html {
   overflow-y: hidden !important;
+  font-size: 12px !important;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+}
+.v-navigation-drawer__border {
+  z-index: 2!important;
 }
 </style>
