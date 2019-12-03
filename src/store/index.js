@@ -10,7 +10,7 @@ export default new Vuex.Store({
     navigationDrawer: true,
     api: {
       baseUrl: "https://api.themoviedb.org/3/",
-      imageUrl: "https://image.tmdb.org/t/p/original/",
+      baseImageUrl: "https://image.tmdb.org/t/p/original/",
       token: process.env.VUE_APP_MOVIEDB_TOKEN,
       key: process.env.VUE_APP_MOVIEDB_KEY,
     },
