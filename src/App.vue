@@ -13,8 +13,6 @@
 
     <!-- right navigation drawer -->
     <RightNaviDrawer />
-
-
   </v-app>
 </template>
 
@@ -38,11 +36,11 @@ export default {
       .then(resp => {
         // console.log(resp.data)
         // console.log(resp.data.results[0].backdrop_path)
+        this.$store.dispatch("fetchMovieDetails");
       })
-      .catch(err => {
-      });
-  } 
-
+      .catch(err => {});
+    
+  }
 };
 </script>
 
@@ -50,9 +48,9 @@ export default {
 html {
   overflow-y: hidden !important;
   font-size: 13px !important;
-  font-family: monospace!important;
+  font-family: monospace !important;
 }
 ::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
+  width: 0px; /* Remove scrollbar space */
 }
 </style>

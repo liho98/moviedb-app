@@ -1,5 +1,10 @@
 <template>
-  <v-navigation-drawer v-model="$store.state.navigationDrawer" app width="150px" style="background-color:rgba(255,255,255,0.12)">
+  <v-navigation-drawer
+    v-model="$store.state.navigationDrawer"
+    app
+    width="150px"
+    style="background-color:rgba(255,255,255,0.12)"
+  >
     <v-container class="pa-0" fill-height>
       <v-row
         align="center"
@@ -10,35 +15,37 @@
         <!-- <v-col align-self="start"> -->
         <v-avatar>
           <!-- <img src="https://vuejs.org/images/logo.png" alt="vue" /> -->
-          <span class="white--text headline">M</span>
+          <span class="white--text headline">LH</span>
         </v-avatar>
         <!-- </v-col> -->
       </v-row>
 
-      <v-row align="center" no-gutters style="align-self: baseline;">
-        <v-list expand width="100%" flat>
-          <v-list-item-group v-model="item" active-class="active-btn">
-            <v-list-item v-for="item in categories" :key="item.title" link>
-              <!-- <v-list-item-icon>
+      <v-row align="center" no-gutters style="align-self: baseline;width:100%">
+        <!-- <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>-->
+        </v-list-item-icon>-->
+        <v-tabs vertical background-color="rgba(0,0,0,0)" color="dark" fixed-tabs grow right>
+          <v-tab
+            class="py-8"
+            v-for="(item) in categories"
+            :key="item.title"
+            style="color: rgba(255, 255, 255, 1)!important;opacity: 1.0;"
+            @click="clickTab(item.title)"
+          >{{ item.title }}</v-tab>
 
-              <v-list-item-content>
-                <v-list-item-title class="px-5 py-3">{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-divider class="px-4" style="margin-top:100px"></v-divider>
-            <v-list-item v-for="item in user" :key="item.title" link>
-              <!-- <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>-->
+          <v-divider class="my-10"></v-divider>
 
-              <v-list-item-content>
+          <v-tab
+            class="py-8"
+            v-for="(item) in user"
+            :key="item.title"
+            style="color: rgba(255, 255, 255, 1)!important;opacity: 1.0;"
+            @click="clickTab(item.title)"
+          >{{ item.title }}</v-tab>
+        </v-tabs>
+        <!-- <v-list-item-content>
                 <v-list-item-title class="px-5 py-3">{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
+        </v-list-item-content>-->
       </v-row>
     </v-container>
     <template v-slot:append>
@@ -73,12 +80,37 @@ export default {
       { title: "Profile", icon: "mdi-dashboard" },
       { title: "Logout", icon: "mdi-account_box" }
     ]
-  })
+  }),
+
+  methods: {
+    clickTab(tab) {
+      // console.log(tab)
+      this.$store.commit("setSelectedTab", tab);
+      if (tab == "TV Shows") {
+        this.$store
+          .dispatch("fetchTV")
+          .then(resp => {
+            // console.log(resp.data)
+            // console.log(resp.data.results[0].backdrop_path)
+            // this.$store.dispatch("fetchMovieDetails");
+            this.$store.dispatch("fetchTvDetails");
+          })
+          .catch(err => {});
+      }
+    }
+  }
 };
 </script>
 
-<style scoped>
+<style>
 .active-btn {
   border-right: 2px solid #ffffff;
+}
+.v-tabs--vertical > .v-tabs-bar {
+  width: 100%;
+}
+.v-tabs-slider-wrapper {
+  right: 0 !important;
+  left: unset !important;
 }
 </style>
