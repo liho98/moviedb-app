@@ -74,11 +74,6 @@ export default {
       { title: "Logout", icon: "mdi-account_box" }
     ]
   })
-
-
-
-
-
 };
 </script>
 

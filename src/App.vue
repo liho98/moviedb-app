@@ -30,7 +30,19 @@ export default {
     RightNaviDrawer
   },
 
-  data: () => ({})
+  data: () => ({}),
+
+  mounted() {
+    this.$store
+      .dispatch("fetchMovie")
+      .then(resp => {
+        // console.log(resp.data)
+        // console.log(resp.data.results[0].backdrop_path)
+      })
+      .catch(err => {
+      });
+  } 
+
 };
 </script>
 

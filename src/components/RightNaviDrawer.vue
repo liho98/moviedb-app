@@ -22,7 +22,7 @@
           color="pink"
         ></v-text-field>
       </v-row>
-      <v-divider style="margin-top: 48px"></v-divider>
+      <!-- <v-divider style="margin-top: 48px"></v-divider> -->
       <div class="movieLists">
         <v-row
           align="center"
@@ -30,11 +30,26 @@
           no-gutters
           style="align-self: baseline;important;z-index:0"
         >
-          <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
-          <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
-          <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
-          <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
-          <v-skeleton-loader class="mx-auto" width="200" type="card"></v-skeleton-loader>
+          <v-skeleton-loader
+            v-for="(movie, i) in $store.state.movieList.results"
+            :key="i"
+            class="mx-auto"
+            style="width:190px"
+            type="card"
+          >
+            <v-card
+              flat
+              class="mx-auto"
+              max-width="100%"
+              color="transparent"
+              style="height: 350px;border-radius: 1px;cursor:pointer"
+              @click="setMovieId(i)"
+            >
+              <v-img :src="$store.state.api.baseImageUrl + movie.poster_path" style="height: 75%;"></v-img>
+
+              <v-card-title class="pl-0">{{movie.title}}</v-card-title>
+            </v-card>
+          </v-skeleton-loader>
         </v-row>
       </div>
     </v-container>
@@ -59,7 +74,14 @@ export default {
       { title: "Logout", icon: "mdi-account_box" }
     ],
     inject: ["theme"]
-  })
+  }),
+
+  methods: {
+    setMovieId(id) {
+      console.log(id);
+      this.$store.commit("setMovieId", id);
+    }
+  }
 };
 </script>
 
@@ -86,8 +108,9 @@ export default {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 .movieLists {
-  margin-top: 25px;
-  margin-bottom: 65px;
+  width: 100%;
+  margin-top: 75px;
+  margin-bottom: 75px;
   overflow-y: scroll;
   height: 90%;
 }
