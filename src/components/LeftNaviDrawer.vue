@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app width="150px" style="background-color:rgba(255,255,255,0.12)">
+  <v-navigation-drawer v-model="$store.state.navigationDrawer" app width="150px" style="background-color:rgba(255,255,255,0.12)">
     <v-container class="pa-0" fill-height>
       <v-row
         align="center"

@@ -28,6 +28,9 @@ export default new Vuex.Store({
     fetch_error(state) {
       state.status = 'error'
     },
+    setNavigationDrawer(state, value) {
+      state.navigationDrawer = value
+    }
   },
   actions: {
     fetchMovie({ commit }) {
