@@ -44,23 +44,21 @@
 
     <v-container fluid class="pa-0">
       <v-row no-gutters align="start" style="height:100%">
-        <v-col cols="10" class="pa-5" style="height:100%">
-          <v-container fluid class="pa-0">
-            <v-row class="ma-0" no-gutters align="start" style="height:100%">
-              <v-col cols="12">
-                <v-btn
-                  @click="toggleDrawer"
-                  small
-                  fab
-                  depressed
-                  outlined
-                  style="border: none;z-index: 1;"
-                >
-                  <v-icon>mdi-menu</v-icon>
-                </v-btn>
-              </v-col>
-            </v-row>
+        <v-col class="pa-5" cols="12" style="position:fixed">
+          <v-btn
+            @click="toggleDrawer"
+            small
+            fab
+            depressed
+            outlined
+            style="border: none;z-index: 1;"
+          >
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+        </v-col>
 
+        <v-col cols="10" class="pa-5 pb-10" style="height:100%;align-self: flex-end;">
+          <v-container fluid class="pa-0">
             <v-row no-gutters align="start" style="height:100%">
               <v-col cols="7">
                 <v-card

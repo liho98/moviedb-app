@@ -5,6 +5,9 @@
     <v-content>
       <!-- Provides the application the proper gutter -->
       <v-container fluid class="pa-0">
+
+
+
         <!-- If using vue-router -->
         <router-view></router-view>
       </v-container>
