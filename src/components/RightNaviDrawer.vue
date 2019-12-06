@@ -1,34 +1,55 @@
 <template>
-  <div>
-    <v-text-field
-      append-icon="mdi-filter-variant"
-      flat
-      hide-details
-      label="Search"
-      prepend-inner-icon="mdi-magnify"
-      solo-inverted
-      color="pink"
-      v-model="tab"
-    ></v-text-field>
-
-    <div style="height: 900px;overflow-y: scroll;">
-      <v-skeleton-loader v-for="(movie, i) in results" :key="i" class="mx-auto my-5" type="card">
-        <v-card
+  <v-container fluid class="fill-height pa-0">
+    <v-row no-gutters align="start" justify="center">
+      <v-col align="start" justify="center" cols="12" class="pa-0">
+        <v-text-field
+          append-icon="mdi-filter-variant"
           flat
-          class="mx-auto"
-          max-width="100%"
-          color="transparent"
-          style="border-radius: 1px;cursor:pointer"
-          @click="setMovieId(i)"
-        >
-          <v-img :src="$store.state.api.baseImageUrl + movie.poster_path"></v-img>
+          hide-details
+          label="Search"
+          solo-inverted
+          color="pink"
+          v-model="tab"
+        ></v-text-field>
+      </v-col>
+      <v-col justify="center" cols="12" class="pa-0">
+        <v-container fluid class="fill-height pa-0" style="overflow-y: scroll;height:88vh">
+          <v-row no-gutters align="start" justify="center">
+            <v-col
+              v-for="(movie, i) in results"
+              :key="i"
+              align="start"
+              justify="center"
+              cols="4"
+              md="12"
+              sm="4"
+              class="pa-2"
+            >
+              <v-card flat color="transparent">
+                <v-skeleton-loader class="mx-auto my-5" type="card">
+                  <v-card
+                    flat
+                    class="mx-auto"
+                    color="transparent"
+                    style="border-radius: 1px;cursor:pointer"
+                    @click="setMovieId(i)"
+                  >
+                    <v-img :src="$store.state.api.baseImageUrl + movie.poster_path"></v-img>
 
-          <v-card-title v-if="$store.state.selectedTab == 'Movie'" class="pl-0">{{movie.title}}</v-card-title>
-          <v-card-title v-else class="pl-0">{{movie.name}}</v-card-title>
-        </v-card>
-      </v-skeleton-loader>
-    </div>
-  </div>
+                    <v-card-title
+                      v-if="$store.state.selectedTab == 'Movie'"
+                      class="pl-0"
+                    >{{movie.title}}</v-card-title>
+                    <v-card-title v-else class="pl-0">{{movie.name}}</v-card-title>
+                  </v-card>
+                </v-skeleton-loader>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

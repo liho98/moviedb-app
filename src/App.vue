@@ -2,12 +2,14 @@
   <v-app>
     <LeftNaviDrawer />
 
-    <v-content>
+    <v-app-bar app flat class="ma-4" color="transparent" style="position: fixed;right:unset">
+      <v-btn @click="toggleDrawer" small fab depressed outlined style="border: none;z-index: 1;">
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-content class="pt-0">
       <!-- Provides the application the proper gutter -->
-      <v-container fluid class="pa-0">
-
-
-
+      <v-container fluid class="fill-height">
         <!-- If using vue-router -->
         <router-view></router-view>
       </v-container>
@@ -28,7 +30,15 @@ export default {
   },
 
   data: () => ({}),
-
+  methods: {
+    toggleDrawer() {
+      this.$store.commit(
+        "setNavigationDrawer",
+        !this.$store.state.navigationDrawer
+      );
+      // console.log(this.$store.state.navigationDrawer)
+    }
+  },
   mounted() {
     this.$store
       .dispatch("fetchMovie")

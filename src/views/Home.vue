@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <v-container fluid class="pa-0 fill-height">
     <div
       style="width:100%;height:100%;position: fixed;top:0;left:0;background-color:rgba(0,0,0,0.3)"
     >
@@ -42,83 +42,70 @@
       </div>
     </div>
 
-    <v-container fluid class="pa-0">
-      <v-row no-gutters align="start" style="height:100%">
-        <v-col class="pa-5" cols="12" style="position:fixed">
-          <v-btn
-            @click="toggleDrawer"
-            small
-            fab
-            depressed
-            outlined
-            style="border: none;z-index: 1;"
-          >
-            <v-icon>mdi-menu</v-icon>
-          </v-btn>
-        </v-col>
+    <v-row no-gutters style="overflow-y: scroll;height: 100vh;">
+      <v-col md="10" sm="12" cols="12" class="px-5" style="margin-top:70px!important">
+        <v-container fluid class="pa-0">
+          <v-row no-gutters style="height:100%;">
 
-        <v-col cols="10" class="pa-5 pb-10" style="height:100%;align-self: flex-end;">
-          <v-container fluid class="pa-0">
-            <v-row no-gutters align="start" style="height:100%">
-              <v-col cols="7">
-                <v-card
-                  justify="end"
-                  style="width:100%;height:100%;background-color:rgba(0,0,0,0);border:none"
-                  outlined
-                >
-                  <v-list-item three-line>
-                    <v-list-item-content>
-                      <v-row>
-                        <v-col v-for="(item, i) in genres" :key="i" cols="2">{{item.name}}</v-col>
-                      </v-row>
-                      <!-- <div class="overline mb-4"></div> -->
-                      <v-list-item-title
-                        class="mb-8 mt-1"
-                        style="font-size: 40px;font-weight: bolder;"
-                      >{{title}}</v-list-item-title>
+            <v-col md="7" sm="12" cols="12">
+              <v-card
+                justify="end"
+                style="width:100%;height:100%;background-color:rgba(0,0,0,0);border:none"
+                outlined
+              >
+                <v-list-item three-line>
+                  <v-list-item-content>
+                    <v-row>
+                      <v-col v-for="(item, i) in genres" :key="i" cols="4" md="2" sm="3">{{item.name}}</v-col>
+                    </v-row>
+                    <!-- <div class="overline mb-4"></div> -->
+                    <v-list-item-title
+                      class="mb-8 mt-1"
+                      style="font-size: 40px;font-weight: bolder;"
+                    >{{title}}</v-list-item-title>
 
-                      <v-list-item-subtitle>{{subtitle}}</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-card>
-              </v-col>
+                    <v-list-item-subtitle>{{subtitle}}</v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-card>
+            </v-col>
 
-              <v-col cols="5">
-                <v-card
-                  style="width:80%;height:100%;background-color:rgba(0,0,0,0);border:none;align-self:start"
-                  outlined
-                >
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card-title class="pb-0">STORYLINE</v-card-title>
-                    </v-col>
-                  </v-row>
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card-text class="pt-0" style="text-align: justify;">{{overview}}</v-card-text>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
+            <v-col md="5" sm="12" cols="12">
+              <v-card
+                style="width:80%;height:100%;background-color:rgba(0,0,0,0);border:none;"
+                outlined
+              >
+                <v-row>
+                  <v-col md="12">
+                    <v-card-title class="pb-0">STORYLINE</v-card-title>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col md="12">
+                    <v-card-text class="pt-0" style="text-align: justify;">{{overview}}</v-card-text>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-col>
 
-        <v-col cols="2" style="height:100%;z-index: 1;">
-          <v-container
-            fill-height
-            style="background-color:rgba(255,255,255,0.12);justify-content: center;"
-          >
-            <v-row style="height: 100%;">
-              <v-col cols="12">
-                <RightNaviDrawer />
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+      <v-col md="2" sm="12" cols="12"  justify="end" style="height:100%;z-index: 1;">
+        <v-container
+          fluid
+          class="fill-height"
+          style="background-color:rgba(255,255,255,0.12);justify-content: center;"
+        >
+          <v-row style="height: 100%;">
+            <v-col align-self="start" md="12">
+              <RightNaviDrawer />
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -158,13 +145,6 @@ export default {
     subtitle: ""
   }),
   methods: {
-    toggleDrawer() {
-      this.$store.commit(
-        "setNavigationDrawer",
-        !this.$store.state.navigationDrawer
-      );
-      // console.log(this.$store.state.navigationDrawer)
-    },
     async playVideo() {
       let tab = this.$store.state.selectedTab;
       if (tab == "Movie") {
