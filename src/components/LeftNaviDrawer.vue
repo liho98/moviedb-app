@@ -5,49 +5,46 @@
     width="150px"
     style="background-color:rgba(255,255,255,0.12)"
   >
-    <v-container class="pa-0" fill-height>
-      <v-row
-        align="center"
-        justify="center"
-        no-gutters
-        style="height: 150px!important;align-self: start;"
-      >
-        <!-- <v-col align-self="start"> -->
-        <v-avatar>
-          <!-- <img src="https://vuejs.org/images/logo.png" alt="vue" /> -->
-          <span class="white--text headline">LH</span>
-        </v-avatar>
-        <!-- </v-col> -->
-      </v-row>
+    <v-row
+      align="center"
+      justify="center"
+      no-gutters
+      style="height: 150px!important;align-self: start;"
+    >
+      <!-- <v-col align-self="start"> -->
+      <v-avatar>
+        <!-- <img src="https://vuejs.org/images/logo.png" alt="vue" /> -->
+        <span class="white--text headline">LH</span>
+      </v-avatar>
+      <!-- </v-col> -->
+    </v-row>
 
-      <v-row align="center" no-gutters style="align-self: baseline;width:100%">
-        <!-- <v-list-item-icon>
+    <v-row align="center" no-gutters style="align-self: baseline;width:100%">
+      <!-- <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>-->
-        <v-tabs vertical background-color="rgba(0,0,0,0)" color="dark" fixed-tabs grow right>
-          <v-tab
-            class="py-8"
-            v-for="(item) in categories"
-            :key="item.title"
-            style="color: rgba(255, 255, 255, 1)!important;opacity: 1.0;"
-            @click="clickTab(item.title)"
-          >{{ item.title }}</v-tab>
+      </v-list-item-icon>-->
+      <v-tabs vertical background-color="rgba(0,0,0,0)" color="dark" fixed-tabs grow right>
+        <v-tab
+          class="py-8"
+          v-for="(item) in categories"
+          :key="item.title"
+          @click="clickTab(item.title)"
+        >{{ item.title }}</v-tab>
 
-          <v-divider class="my-10"></v-divider>
+        <v-divider class="my-10"></v-divider>
 
-          <v-tab
-            class="py-8"
-            v-for="(item) in user"
-            :key="item.title"
-            style="color: rgba(255, 255, 255, 1)!important;opacity: 1.0;"
-            @click="clickTab(item.title)"
-          >{{ item.title }}</v-tab>
-        </v-tabs>
-        <!-- <v-list-item-content>
+        <v-tab
+          class="py-8"
+          v-for="(item) in user"
+          :key="item.title"
+          @click="clickTab(item.title)"
+        >{{ item.title }}</v-tab>
+      </v-tabs>
+      <!-- <v-list-item-content>
                 <v-list-item-title class="px-5 py-3">{{ item.title }}</v-list-item-title>
-        </v-list-item-content>-->
-      </v-row>
-    </v-container>
+      </v-list-item-content>-->
+    </v-row>
+
     <template v-slot:append>
       <v-list expand width="100%" flat>
         <v-list-item>
