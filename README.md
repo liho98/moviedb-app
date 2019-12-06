@@ -1,5 +1,7 @@
 # moviedb-app
 
+<img src="https://media.giphy.com/media/ihfG2BLhywMcoSahhJ/giphy.gif" width="100%" />
+
 ## Project setup
 ```
 npm install
